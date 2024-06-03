@@ -1,12 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import { css } from '../assets/Hangeuljaemin4-Regular.otf'
+import HelloWorld from "./components/HelloWorld.vue";
+import { css } from "../assets/Hangeuljaemin4-Regular.otf";
+// import { css } from "../assets/Hangeuljaemin4-Regular.otf?subsets";
 </script>
 
 <template>
-  <div :style="{
-    'fontFamily': `'${css.family}'`,
-  }">
+  <div
+    :style="{
+      fontFamily: `'${css.family}'`,
+    }"
+  >
     <div>
       <a href="https://vitejs.dev" target="_blank">
         <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -15,7 +18,7 @@ import { css } from '../assets/Hangeuljaemin4-Regular.otf'
         <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
     </div>
-    <HelloWorld  msg="Vite + Vue" />
+    <HelloWorld msg="Vite + Vue" />
   </div>
 </template>
 
