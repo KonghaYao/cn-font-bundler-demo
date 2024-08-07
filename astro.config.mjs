@@ -3,6 +3,6 @@ import font from 'vite-plugin-font'
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [font()],
+    plugins: [font.vite()],
   },
 });
