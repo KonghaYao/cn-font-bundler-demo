@@ -1,32 +1,24 @@
 const rspack = require("@rspack/core");
+const { fontPlugin } = require("vite-plugin-font")
 const refreshPlugin = require("@rspack/plugin-react-refresh");
 const isDev = process.env.NODE_ENV === "development";
 /**
  * @type {import('@rspack/cli').Configuration}
  */
 module.exports = {
-	context: __dirname,
 	entry: {
 		main: "./src/main.tsx"
 	},
 	resolve: {
 		extensions: ["...", ".ts", ".tsx", ".jsx"]
 	},
+	plugins: [fontPlugin.rspack()],
 	module: {
 		rules: [
 			{
 				test: /\.svg$/,
 				type: "asset"
 			},
-			{
-                test: /\.(otf|ttf)/i,
-                use: [
-                    {
-                        loader: './node_modules/vite-plugin-font/dist/webpack.mjs',
-                        options: {},
-                    },
-                ],
-            },
 			{
 				test: /\.(jsx?|tsx?)$/,
 				use: [
