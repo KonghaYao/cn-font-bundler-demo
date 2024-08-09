@@ -18,6 +18,6 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^5",
-    "vite-plugin-font": "^2.0.1"
+    "vite-plugin-font": "^2.1.3"
   }
 }

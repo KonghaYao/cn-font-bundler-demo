@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
-import font from 'vite-plugin-font'
+import { fontPlugin } from 'vite-plugin-font'
 const nextConfig = {
     webpack: (config, options) => {
-        config.plugins.push(font.webpack())
+        config.plugins.push(fontPlugin.webpack())
         return config
     },
 };
