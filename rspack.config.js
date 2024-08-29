@@ -10,9 +10,12 @@ module.exports = {
 		main: "./src/main.tsx"
 	},
 	resolve: {
-		extensions: ["...", ".ts", ".tsx", ".jsx"]
+		extensions: [".ts", ".tsx", ".jsx"]
 	},
 	plugins: [fontPlugin.rspack()],
+	experiments: {
+		css: true,
+	},
 	module: {
 		rules: [
 			{
