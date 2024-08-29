@@ -1,5 +1,5 @@
 const rspack = require("@rspack/core");
-const { fontPlugin } = require("vite-plugin-font")
+const fontPlugin  = require("vite-plugin-font")
 const refreshPlugin = require("@rspack/plugin-react-refresh");
 const isDev = process.env.NODE_ENV === "development";
 /**
@@ -9,10 +9,6 @@ module.exports = {
 	entry: {
 		main: "./src/main.tsx"
 	},
-	resolve: {
-		extensions: [".ts", ".tsx", ".jsx"]
-	},
-	plugins: [fontPlugin.rspack()],
 	experiments: {
 		css: true,
 	},
@@ -56,6 +52,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		fontPlugin.rspack(),
 		new rspack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
 		}),
