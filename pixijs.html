@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiJS 示例</title>
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/yzgcxst/dist/也字工厂小石头/result.css' />
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #pixiCanvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="module">
+        import { Application, Container, Text } from 'https://unpkg.com/pixi.js/dist/pixi.min.mjs';
+
+        (async () => {
+            // Create a new application
+            const app = new Application();
+
+            // Initialize the application
+            await app.init({ background: '#1099bb', resizeTo: window });
+
+            const text = new Text({
+                text: '中文网字',
+                style: {
+                    fontFamily: 'YEFONTXiaoShiTou'
+                }
+            })
+            // 设置文本对象的位置
+            text.anchor.set(0.5);
+            text.x = app.renderer.width / 2;
+            text.y = app.renderer.height / 2;
+            // Append the application canvas to the document body
+            document.body.appendChild(app.canvas);
+
+            // Create and add a container to the stage
+            const container = new Container();
+            container.addChild(text)
+            app.stage.addChild(container);
+            document.fonts.onloadingdone = () => {
+                console.log(app)
+            };
+        })();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaferJS 示例</title>
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/yzgcxst/dist/也字工厂小石头/result.css' />
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #leaferCanvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="leaferCanvas"></div>
+    <script type="module">
+        import { Leafer, Text } from 'https://unpkg.com/leafer-ui@1.3.1/dist/web.module.min.js'
+        // 等待页面加载完成
+        // 创建 Leafer 实例
+        const leafer = new Leafer({
+            view: document.getElementById('leaferCanvas')
+        });
+
+        // 创建文本对象
+        const text = new Text({
+            text: '中文网字',
+            fontFamily: 'YEFONTXiaoShiTou',
+            fontSize: 48,
+            fill: '#000000',
+            x: leafer.width / 2,
+            y: leafer.height / 2,
+            align: 'center',
+            verticalAlign: 'middle'
+        });
+
+        // 添加文本对象到 Leafer 实例中
+        leafer.add(text);
+        document.fonts.onloadingdone = () => {
+            leafer.forceUpdate()
+        }
+    </script>
+</body>
+
+</html>

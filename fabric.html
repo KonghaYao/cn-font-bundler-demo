@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabricJS 示例</title>
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/yzgcxst/dist/也字工厂小石头/result.css' />
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fabricCanvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="fabricCanvas"></canvas>
+    <script type="module">
+        import { StaticCanvas, Text } from 'https://unpkg.com/fabric@6.5.4/dist/index.min.mjs'
+        // 等待页面加载完成
+        document.addEventListener('DOMContentLoaded', () => {
+            // 创建 FabricJS 画布实例
+            const canvas = new StaticCanvas('fabricCanvas', {
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+
+            // 创建文本对象
+            const text = new Text('中文网字', {
+                fontFamily: 'YEFONTXiaoShiTou',
+                fontSize: 48,
+                fill: '#000000',
+                left: canvas.width / 2,
+                top: canvas.height / 2,
+                originX: 'center',
+                originY: 'center'
+            });
+
+            // 添加文本对象到画布中
+            canvas.add(text);
+
+            // 监听字体加载完成事件
+            document.fonts.onloadingdone = () => {
+                canvas._objects.forEach(i => {
+                    if (i.fontFamily === "YEFONTXiaoShiTou")
+                        i._forceClearCache = true
+                })
+                // 重绘制
+                canvas.renderAll();
+
+                console.log("重新绘制", text, canvas)
+            }
+        });
+    </script>
+</body>
+
+</html>
