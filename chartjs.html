@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chart.js 示例</title>
+    <!-- 引入 Chart.js 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 引入 YEFONTXiaoShiTou 字体 -->
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/yzgcxst/dist/也字工厂小石头/result.css' />
+</head>
+
+<body>
+    <!-- 准备一个 DOM 容器 -->
+    <canvas id="myChart" width="600" height="400"></canvas>
+    <script>
+        // 获取 canvas 元素
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // 创建 Chart.js 实例
+        var myChart = new Chart(ctx, {
+            type: 'bar', // 图表类型，可以根据需要更改
+            data: {
+                labels: ['A', 'B', 'C', 'D', 'E'], // 示例数据
+                datasets: [{
+                    label: '示例数据',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '中文网字',
+                        font: {
+                            family: 'YEFONTXiaoShiTou',
+                            size: 40,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 20,
+                            bottom: 20
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 确保字体加载完成后重新渲染图表
+        document.fonts.onloadingdone = () => {
+            myChart.update();
+        }
+    </script>
+</body>
+
+</html>
