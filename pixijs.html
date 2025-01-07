@@ -27,35 +27,39 @@
 
 <body>
     <script type="module">
-        import { Application, Container, Text } from 'https://unpkg.com/pixi.js/dist/pixi.min.mjs';
+        import {Application, Container, Text} from 'https://unpkg.com/pixi.js@7/dist/pixi.min.mjs';
 
         (async () => {
-            // Create a new application
-            const app = new Application();
-
-            // Initialize the application
-            await app.init({ background: '#1099bb', resizeTo: window });
-
-            const text = new Text({
-                text: '中文网字',
-                style: {
-                    fontFamily: 'YEFONTXiaoShiTou'
-                }
+            const app = new Application({
+                backgroundColor: 0x1099bb
+            });
+            document.body.appendChild(app.view);
+            const text = new Text('中文网字', {
+                fontFamily: 'YEFONTXiaoShiTou'
             })
-            // 设置文本对象的位置
             text.anchor.set(0.5);
             text.x = app.renderer.width / 2;
             text.y = app.renderer.height / 2;
-            // Append the application canvas to the document body
-            document.body.appendChild(app.canvas);
 
-            // Create and add a container to the stage
             const container = new Container();
             container.addChild(text)
             app.stage.addChild(container);
             document.fonts.onloadingdone = () => {
-                console.log(app)
+                updateTextElements(app.stage)
             };
+            function updateTextElements(stage) {
+                function traverseChildren(container) {
+                    container.children.forEach(child => {
+                        if (child instanceof Text) {
+                            child.updateText();
+                        }
+                        if (child.children && child.children.length > 0) {
+                            traverseChildren(child);
+                        }
+                    });
+                }
+                traverseChildren(stage);
+            }
         })();
 
     </script>
