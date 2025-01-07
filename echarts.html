@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ECharts 示例</title>
+    <!-- 引入 ECharts 库 -->
+    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+    <!-- 引入 YEFONTXiaoShiTou 字体 -->
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/yzgcxst/dist/也字工厂小石头/result.css' />
+</head>
+
+<body>
+    <!-- 准备一个 DOM 容器 -->
+    <div id="main" style="width: 600px; height: 400px;"></div>
+    <script>
+        // 基于准备好的 DOM，初始化 ECharts 实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '中文网字',
+                left: 'center',
+                top: 'center',
+                textStyle: {
+                    fontFamily: 'YEFONTXiaoShiTou',
+                    fontSize: 40,
+                    fontWeight: 'bold'
+                }
+            }
+        };
+
+        // 使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+        document.fonts.onloadingdone = () => {
+            myChart.setOption(option);
+        }
+    </script>
+</body>
+
+</html>
