@@ -1,4 +1,4 @@
-import { css } from "../assets/Hangeuljaemin4-Regular.otf";
+import { css } from "../assets/Hangeuljaemin4-Regular.otf?subsets";
 export default () => {
   console.log(css);
   return (

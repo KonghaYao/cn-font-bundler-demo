@@ -2,7 +2,11 @@
 import fontPlugin from 'vite-plugin-font'
 const nextConfig = {
     webpack: (config, options) => {
-        config.plugins.push(fontPlugin.webpack())
+        config.plugins.push(fontPlugin.webpack({
+            scanFiles: {
+                default : ['pages/**/*']
+            }
+        }))
         return config
     },
 };
