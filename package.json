@@ -1,23 +1,31 @@
 {
-  "name": "next",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "^14.2.23",
-    "react": "^18",
-    "react-dom": "^18"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "typescript": "^5",
-    "vite-plugin-font": "^5.1.0"
-  }
+    "name": "next",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "next": "^15.3.3",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.19.0",
+        "@types/react": "^18.3.23",
+        "@types/react-dom": "^18.3.7",
+        "typescript": "^5.8.3",
+        "vite-plugin-font": "^5.1.2"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "cn-font-split",
+            "koffi",
+            "protobufjs",
+            "sharp"
+        ]
+    }
 }
